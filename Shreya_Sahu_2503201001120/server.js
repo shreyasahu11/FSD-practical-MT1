@@ -35,17 +35,17 @@ let products = [
 ];
 
 
-// 1. GET all products
+
 app.get("/api/products", (req, res) => {
     res.status(200).json(products);
 });
 
 
-// 2. POST a new product
+
 app.post("/api/products", (req, res) => {
     const { name, category, price, quantity, inStock } = req.body;
 
-    // Validation
+    
     if (
         !name ||
         !category ||
@@ -70,7 +70,7 @@ app.post("/api/products", (req, res) => {
         });
     }
 
-    // Generate unique ID
+  
     const newId =
         products.length > 0
             ? Math.max(...products.map(product => product.id)) + 1
@@ -91,7 +91,7 @@ app.post("/api/products", (req, res) => {
 });
 
 
-// 3. GET product by ID
+
 app.get("/api/products/:id", (req, res) => {
     const id = Number(req.params.id);
 
@@ -107,7 +107,7 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 
-// 4. PUT / update product
+
 app.put("/api/products/:id", (req, res) => {
     const id = Number(req.params.id);
 
@@ -121,7 +121,7 @@ app.put("/api/products/:id", (req, res) => {
 
     const { name, category, price, quantity, inStock } = req.body;
 
-    // Validation
+    
     if (
         !name ||
         !category ||
@@ -159,7 +159,7 @@ app.put("/api/products/:id", (req, res) => {
 });
 
 
-// 5. DELETE product
+
 app.delete("/api/products/:id", (req, res) => {
     const id = Number(req.params.id);
 
@@ -179,8 +179,7 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 
-// 6. Filter products by category
-// IMPORTANT: Keep this route before /:id
+
 app.get("/api/products/filter", (req, res) => {
     const category = req.query.category;
 
@@ -193,7 +192,7 @@ app.get("/api/products/filter", (req, res) => {
 });
 
 
-// Start server
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
